@@ -364,15 +364,6 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             while True:
                     nombre = input ("Ingrese el nombre del agente ")
                     while nombre.isalpha():
-                        if alarma == True and tiempo <= 3:
-                            print ("DERROTA (bloqueo)")
-                            break
-                        elif cerraduras_abiertas == 3:
-                            print ("VICTORIA")
-                            break
-                        elif energia <= 0 or tiempo <= 0:
-                            print ("DERROTA")
-                            break
                         print (f"Agente activo: {nombre}")
                         print (f"Energía: {energia}")
                         print (f"Tiempo: {tiempo} minutos")
@@ -392,7 +383,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ")
                                     while riesgo.isdigit():
                                         if riesgo == "1" or riesgo == "2" or riesgo == "3":
-                                            break
+                                            continue
                                         else:
                                             print ("Por favor ingrese un número del 1 al 3")
                                             break
@@ -483,6 +474,15 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     break
                         else:
                             print ("Elija un número del 1 al 3")
+                        if alarma == True and tiempo <= 3:
+                            print ("DERROTA (bloqueo)")
+                            break
+                        elif cerraduras_abiertas == 3:
+                            print ("VICTORIA")
+                            break
+                        elif energia <= 0 or tiempo <= 0:
+                            print ("DERROTA")
+                            break
                     else:
                         print ("Por favor ingrese solo letras como caracteres")
                     
@@ -492,19 +492,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             vida_gladiador = 100 
             vida_enemigo = 100
             pociones_vida = 3
-            daño_base_ataque_pesado = 15 
-            daño_base_enemigo = 12
+            danio_base_ataque_pesado = 15 
+            danio_base_enemigo = 12
             turno_gladiador = True
 
             while True:
                 nombre = input ("Ingrese el nombre del gladiador ")
                 while nombre.isalpha():
-                    if vida_gladiador > 0 and vida_enemigo <= 0:
-                        print (f"¡VICTORIA! {nombre} ha ganado la batalla.")
-                        exit()
-                    elif vida_gladiador <= 0:
-                        print ("DERROTA. Has caído en combate.")
-                        exit()
                     print (f"Vida enemigo: {vida_enemigo}")
                     print (f"Vida gladiador: {vida_gladiador}")
                     print ("Las opciones son las siguentes:")
@@ -512,33 +506,37 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                     print ("2. Ráfaga Veloz")
                     print ("3. Curar")
                     opcion = input ("Ingrese el número de la acción que quiere realizar ")
-                    while opcion.isdigit():
+                    if opcion.isdigit():
                         match opcion:
                             case "1":
-                                if  vida_gladiador >= 20:
-                                    vida_enemigo -= daño_base_ataque_pesado
-                                    print (f"¡Atacaste al enemigo por {daño_base_ataque_pesado} puntos de daño!")
-                                elif vida_gladiador < 20:
-                                    daño_critico = daño_base_ataque_pesado * 1.5
-                                    vida_enemigo -= daño_critico
-                                    print (f"¡Atacaste al enemigo por {daño_critico} puntos de daño!")
-                                break
+                                    if vida_enemigo >= 20:
+                                        vida_enemigo -= danio_base_ataque_pesado
+                                        print(f"¡Atacaste al enemigo por {danio_base_ataque_pesado} puntos de daño!")
+                                    else:
+                                        danio_critico = danio_base_ataque_pesado * 1.5
+                                        vida_enemigo -= danio_critico
+                                        print(f"¡Atacaste al enemigo por {danio_critico} puntos de daño!")
                             case "2":
                                 for x in range (1, 4):
                                     vida_enemigo -= 5
                                     print ("Golpe conectado por 5 de daño")
-                                break
                             case "3":
                                 if pociones_vida > 0:
                                     vida_gladiador += 30
                                     pociones_vida -= 1
                                 else:
                                     print ("¡No quedan pociones!")
-                                break
+                                    break
                     else:
                         print ("Elija un número del 1 al 3")
                     vida_gladiador -= 12
                     print ("¡El enemigo te atacó por 12 puntos de daño!")
+                    if vida_gladiador > 0 and vida_enemigo <= 0:
+                        print (f"¡VICTORIA! {nombre} ha ganado la batalla.")
+                        break
+                    elif vida_gladiador <= 0:
+                        print ("DERROTA. Has caído en combate.")
+                        break
                 else:
                     print ("Por favor ingrese solo letras como caracteres")
         
