@@ -201,7 +201,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     else:
                                         print ("Por favor ingrese solo letras como caracteres")
                         case "2":
-                            dia = int(input("Ingrese el día a candelar: Lunes (1) o Martes (2) "))
+                            dia = int(input("Ingrese el día a cancelar: Lunes (1) o Martes (2) "))
                             match dia:
                                 case 1:
                                     paciente = input ("Ingrese el nombre del paciente ")
@@ -360,130 +360,132 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             cont_descansar = 0
             cont_codigo = 0
 
+
             while True:
-                nombre = input ("Ingrese el nombre del agente ")
-                while nombre.isalpha():
-                    print (f"Agente activo: {nombre}")
-                    print (f"Energía: {energia}")
-                    print (f"Tiempo: {tiempo} minutos")
-                    print (f"Cerraduras Abiertas: {cerraduras_abiertas}")
-                    if alarma == True and tiempo <= 3:
-                        print ("DERROTA (bloqueo)")
-                        exit()
-                    elif cerraduras_abiertas == 3:
-                        print ("VICTORIA")
-                        exit()
-                    elif energia <= 0 or tiempo <= 0:
-                        print ("DERROTA")
-                        exit()
-                    print ("1. Forzar cerradura")
-                    print ("2. Hackear panel")
-                    print ("3. Descansar")
-                    opcion = input("Elija una opción del 1 al 3 ")
-                    while opcion.isdigit():
-                        match opcion:
-                            case "1":
-                                if energia < 40 and alarma == False:
-                                    print ("Hay riesgo de alarma")
-                                energia = energia - 20
-                                tiempo = tiempo - 2
-                                cont_forzar += 1
-                                riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ")
-                                while riesgo.isdigit():
-                                    if riesgo == "1" or riesgo == "2" or riesgo == "3":
+                    nombre = input ("Ingrese el nombre del agente ")
+                    while nombre.isalpha():
+                        if alarma == True and tiempo <= 3:
+                            print ("DERROTA (bloqueo)")
+                            break
+                        elif cerraduras_abiertas == 3:
+                            print ("VICTORIA")
+                            break
+                        elif energia <= 0 or tiempo <= 0:
+                            print ("DERROTA")
+                            break
+                        print (f"Agente activo: {nombre}")
+                        print (f"Energía: {energia}")
+                        print (f"Tiempo: {tiempo} minutos")
+                        print (f"Cerraduras Abiertas: {cerraduras_abiertas}")
+                        print ("1. Forzar cerradura")
+                        print ("2. Hackear panel")
+                        print ("3. Descansar")
+                        opcion = input("Elija una opción del 1 al 3 ")
+                        while opcion.isdigit():
+                            match opcion:
+                                case "1":
+                                    if energia < 40 and alarma == False:
+                                        print ("Hay riesgo de alarma")
+                                    energia = energia - 20
+                                    tiempo = tiempo - 2
+                                    cont_forzar += 1
+                                    riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ")
+                                    while riesgo.isdigit():
+                                        if riesgo == "1" or riesgo == "2" or riesgo == "3":
+                                            break
+                                        else:
+                                            print ("Por favor ingrese un número del 1 al 3")
+                                            break
+                                    riesgo = int(riesgo)
+                                    if riesgo == 3 and cerraduras_abiertas <= 2:
+                                        alarma = True
+                                        print ("Empieza a sonar la alarma")
+                                        print ("No logra abrir la cerradura")
                                         break
-                                    else:
-                                        print ("Por favor ingrese un número del 1 al 3")
+                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas <= 1:
+                                        print ("Logra abrir 1 cerradura")
+                                        cerraduras_abiertas += 1
                                         break
-                                riesgo = int(riesgo)
-                                if riesgo == 3 and cerraduras_abiertas <= 2:
-                                    alarma = True
-                                    print ("Empieza a sonar la alarma")
-                                    print ("No logra abrir la cerradura")
-                                    break
-                                elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas <= 1:
-                                    print ("Logra abrir 1 cerradura")
-                                    cerraduras_abiertas += 1
-                                    break
-                                elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas == 2: 
-                                    if cont_forzar == 3 and (cont_hackear == 0 and cont_descansar == 0):
-                                        if alarma == True:
-                                            print ("Con la alarma sonando, se traba la cerradura debido a sus recurrentes intentos de abrirla ")
-                                        else:                        
-                                            print ("Empieza a sonar la alarma debido a sus recurrentes intentos de abrir la cerradura ")
-                                            print ("No logra abrir la cerradura")
+                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas == 2: 
+                                        if cont_forzar == 3 and (cont_hackear == 0 and cont_descansar == 0):
+                                            if alarma == True:
+                                                print ("Con la alarma sonando, se traba la cerradura debido a sus recurrentes intentos de abrirla ")
+                                            else:                        
+                                                print ("Empieza a sonar la alarma debido a sus recurrentes intentos de abrir la cerradura ")
+                                                print ("No logra abrir la cerradura")
+                                                cont_forzar = 0
+                                                cont_hackear = 0
+                                                cont_descansar = 0
+                                                break
+                                    if cont_hackear < 3 and (cont_hackear > 0 or cont_descansar > 0):
                                             cont_forzar = 0
                                             cont_hackear = 0
                                             cont_descansar = 0
                                             break
-                                if cont_hackear < 3 and (cont_hackear > 0 or cont_descansar > 0):
-                                        cont_forzar = 0
-                                        cont_hackear = 0
-                                        cont_descansar = 0
-                                        break
-                            case "2":
-                                    energia = energia - 10
-                                    tiempo = tiempo - 3
-                                    cont_hackear +=1 
-                                    if cerraduras_abiertas <= 2:
-                                        if cont_codigo >= 0 and cont_codigo <= 4:
-                                            for x in range (1,5):
-                                                cont_codigo +=1
-                                                if cont_codigo == 1:
-                                                    codigo_parcial += "M"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 2:
-                                                    codigo_parcial += "A"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 3:
-                                                    codigo_parcial += "U"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 4:
-                                                    codigo_parcial += "L"
-                                                    print (f"Código: {codigo_parcial}")
-                                            cont_codigo += 1
-                                            if len(codigo_parcial) <= 8:
+                                case "2":
+                                        energia = energia - 10
+                                        tiempo = tiempo - 3
+                                        cont_hackear +=1 
+                                        if cerraduras_abiertas <= 2:
+                                            if cont_codigo >= 0 and cont_codigo <= 4:
+                                                for x in range (1,5):
+                                                    cont_codigo +=1
+                                                    if cont_codigo == 1:
+                                                        codigo_parcial += "M"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 2:
+                                                        codigo_parcial += "A"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 3:
+                                                        codigo_parcial += "U"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 4:
+                                                        codigo_parcial += "L"
+                                                        print (f"Código: {codigo_parcial}")
+                                                cont_codigo += 1
+                                                if len(codigo_parcial) <= 8:
+                                                    cerraduras_abiertas += 1
+                                                    print ("Has abierto una cerradura")
+                                                break
+                                            if cont_codigo > 4 and cont_codigo <= 8:  
+                                                for x in range (1,5):
+                                                    cont_codigo +=1
+                                                    if cont_codigo == 5:
+                                                        codigo_parcial += "L"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 6:
+                                                        codigo_parcial += "I"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 7:
+                                                        codigo_parcial += "D"
+                                                        print (f"Código: {codigo_parcial}")
+                                                    elif cont_codigo == 8:
+                                                        codigo_parcial += "O"
+                                                        print (f"Código: {codigo_parcial}")
+                                                        print ("Código completo")
+                                            if len(codigo_parcial) <= 8 and  len(codigo_parcial) >=5:
                                                 cerraduras_abiertas += 1
                                                 print ("Has abierto una cerradura")
+                                                break
+                                        else:
+                                            print ("Ya abrió todas las cerraduras posibles usando este método")
                                             break
-                                        if cont_codigo > 4 and cont_codigo <= 8:  
-                                            for x in range (1,5):
-                                                cont_codigo +=1
-                                                if cont_codigo == 5:
-                                                    codigo_parcial += "L"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 6:
-                                                    codigo_parcial += "I"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 7:
-                                                    codigo_parcial += "D"
-                                                    print (f"Código: {codigo_parcial}")
-                                                elif cont_codigo == 8:
-                                                    codigo_parcial += "O"
-                                                    print (f"Código: {codigo_parcial}")
-                                                    print ("Código completo")
-                                        if len(codigo_parcial) <= 8 and  len(codigo_parcial) >=5:
-                                            cerraduras_abiertas += 1
-                                            print ("Has abierto una cerradura")
-                                            break
-                                    else:
-                                        print ("Ya abrió todas las cerraduras posibles usando este método")
-                                        break
-                            case "3":
-                                if energia < 100:
-                                    energia += 15
-                                tiempo -= 1
-                                if alarma == True:
-                                    energia -= 10
-                                print ("Se toma un breve descanso")
-                                break
-                            case _:
-                                print ("Por favor ingrese un número del 1 al 3")
-                                break
+                                case "3":
+                                    if energia < 100:
+                                        energia += 15
+                                    tiempo -= 1
+                                    if alarma == True:
+                                        energia -= 10
+                                    print ("Se toma un breve descanso")
+                                    break
+                                case _:
+                                    print ("Por favor ingrese un número del 1 al 3")
+                                    break
+                        else:
+                            print ("Elija un número del 1 al 3")
                     else:
-                        print ("Elija un número del 1 al 3")
-                else:
-                    print ("Por favor ingrese solo letras como caracteres")
+                        print ("Por favor ingrese solo letras como caracteres")
+                    
 
         case "5": # Ejercicio 5
 
