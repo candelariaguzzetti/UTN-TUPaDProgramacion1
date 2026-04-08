@@ -408,26 +408,34 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             productoscargar = 4   # Preparamos las variables que vamos a usar para los bucles 
             diascargar = 7
 
-            tabla = [[0]*diascargar for datos in range(productoscargar)] # Creamos una matriz de 4x7 celdas
-
-            print("Ingrese los datos")
+            precios = [[0]*diascargar for datos in range(productoscargar)] # Creamos una matriz de 4x7 celdas
 
             for x in range(productoscargar): # Hacemos un bucle 
                 for i in range(diascargar): # Hacemos un bucle anidado para las columnas
-                    tabla[x][i] = int(input(f"Ingrese la ganancia {i+1} del producto {x+1}:\n")) # Pedimos los valores de cada posicion a completar
+                    precios[x][i] = int(input(f"Ingrese la ganancia {i+1} del producto {x+1}:\n")) # Pedimos los valores de cada posicion a completar
 
             print("Tabla cargada:")
-            for fila in tabla: # Imprimimos en un bucle cada fila de la tabla completa
+            for fila in precios: # Imprimimos en un bucle cada fila de la tabla completa
                 print(fila)
             
             contprod = 0
+            sumaproductos = 0
+            mayorventas =[]
 
-            for k in range (diascargar):
-                for z in range (productoscargar):
+            for z in range (productoscargar):
+                sumaproductos = 0
+                for k in range (diascargar):
                     contprod += 1
-                    sumaproductos = 0
-                    sumaproductos += tabla [k] [z]
-                    print (f"La suma del día {contprod} para el producto {z+1} es de: {sumaproductos}")
+                    sumaproductos += precios [z] [k]
+                
+                mayorventas.append (sumaproductos)            
+                print (f"La suma de la semanana para el producto {z+1} es de: {sumaproductos}")
+
+            print (mayorventas)
+
+            mayorventastotales = max(mayorventas) # Calculamos el número de mayores ventas
+            diamayor = mayorventas.index(mayorventastotales) # Calculamos el día que fue las mayores ventas totales 
+            print (f"El día con la mayores ventas fue el día {diamayor+1} con ${mayorventastotales} de ganancia") # Imprimimos los resultados
             
         case "11": 
             pass
