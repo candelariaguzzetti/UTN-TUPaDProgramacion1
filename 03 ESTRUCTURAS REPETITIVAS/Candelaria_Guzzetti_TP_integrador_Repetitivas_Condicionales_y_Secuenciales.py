@@ -32,7 +32,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     cont_compra += 1 # Actualizamos el contador asi en la próxima vuelta sigue diciendo el número correcto de producto ingresado
                                 else: # Condicion si no es un dígito
                                     print ("Por favor ingrese un número.") # Imprimimos el aviso para que ingresen los datos correctos
-                                    break
+                                    break # Salimos del bucle
                                 
                                 if descuento == "S" or descuento == "s": # Hacemos una condición para analizar los datos ingresados en el input "descuento".
                                     porcentaje = precio * 0.10 # Si usan las letras que corresponden a "si", calculamos el porcentaje de descuento que tiene el producto
@@ -43,10 +43,10 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     continue # ... Seguimos con el programa
                                 else: # Si no usan ninguna de las letras pedidas: ...
                                     print ("Por favor ingrese S para si o N para no ") #... Aclaramos que ingresen los datos correctos
-                                    break
+                                    break # Salimos del bucle
                         
-                    promedio = precio_s_descuento / producto # Calculamos el promedio de los productos ingresados usando el precio sin descuento dividido la cantidad de productos ingresada
                     precio_c_descuento_suma = precio_s_descuento - ahorro # Calculamos el total con descuentos
+                    promedio = precio_c_descuento_suma / producto # Calculamos el promedio de los productos ingresados usando el precio con descuento dividido la cantidad de productos ingresada
 
                     print (f"Cliente: {nombre}") # Imprimimos el nombre del cliente
                     print (f"Cantidad de productos: {producto}") # Imprimimos la cantidad de productos ingresada
@@ -54,6 +54,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                     print (f"Total con descuentos:{precio_c_descuento_suma}") # Imprimimos el total de precio con descuentos 
                     print (f"Ahorro:{ahorro}") # Imprimimos el ahorro total
                     print (f"Promedio por producto:{promedio:.2f}") # Imprimimos el promedio de precio por producto sin contar el ahorro
+                    break
 
                 else:
                     print ("Ingrese un número mayor a cero")
