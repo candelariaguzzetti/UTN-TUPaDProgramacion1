@@ -438,7 +438,23 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             print (f"El día con la mayores ventas fue el día {diamayor+1} con ${mayorventastotales} de ganancia") # Imprimimos los resultados
             
         case "11": 
-            pass
+            
+            estudiantes10 = ["María Perez", "Juana Lopez", "Anabella Gutierrez", "Marisa Ramirez", "Loana Barroso", "Pedro Thompson", "Alonso Jimenez", "Facundo Fernandez", "Constanza Aparicio", "Luna Cabrera"]
+        
+            nombrebusqueda = input ("Ingrese el nombre que desea buscar ")
+            if nombrebusqueda.isalpha:
+
+                if nombrebusqueda.title() in estudiantes10:
+                    print (f"{nombrebusqueda.title()} se encuentra en la lista de estudiantes")
+                    indiceestudiante = estudiantes10.index(nombrebusqueda.title())
+                    print (f"{nombrebusqueda.title()} se encuentra en el puesto {indiceestudiante+1} de la lista de Estudiantes")
+                else:
+                    print (f"{nombrebusqueda.title()} no se encuentra en la lista de estudiantes")
+                
+                
+            else:
+                print ("Ingrese solo letras en el nombre")
+
         case "12":
             pass
         case "13":
