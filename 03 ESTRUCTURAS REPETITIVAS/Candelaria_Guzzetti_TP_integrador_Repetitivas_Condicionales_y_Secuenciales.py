@@ -6,68 +6,57 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
 
     match ejercicio:
         case "1": # Ejercicio 1
-            nombre = input("Ingrese el nombre del cliente, solo se permiten letras como caracteres. ") # Pedimos los datos del nombre
-            cont_nombre = 1 # Preparamos el contador 
 
-            while cont_nombre == 1: #Plantemos el bucle
+            while True: 
+                nombre = input("Ingrese el nombre del cliente, solo se permiten letras como caracteres. ") # Pedimos los datos del nombre
                 if nombre.isalpha(): # Hacemos una condición para ver si los datos ingresados son caracteres de letras
                     print (f"Cliente: {nombre}") #Imprimimos los datos de ser letras
-                    cont_nombre += 1 #Actualizamos el contador para salir del bucle
+                    break
                 else: # Condicion si los datos no son letras
                     print ("Por favor ingrese un nombre usando solo letras como caracteres.") # Imprimimos el aviso para que ingresen los datos correctos
-                    break
 
             while True: 
                 producto = input("Ingrese la cantidad de productos a comprar. ") # Pedimos los datos de la cantidad de productos 
                 if producto.isdigit():
-                    break
+                    producto = int(producto) # Actualizamos el producto de string a integer para que pueda ser leido correctamente en la comparación de la condición
+                    if producto > 0 : # Hacemos una condición para ver si el número ingresado es mayor a cero
+                        cont_compra = 1 # Preparamos el contador, empieza en 1 para que diga correctamente el número de producto a pedir datos
+                        precio_s_descuento = 0 # Preparamos la variable que va a guardar el precio final sin descuento
+                        while cont_compra <= producto: # Comenzamos el bucle que va a estar activo solo para la cantidad de productos ingresados en el input "producto"
+                            for x in range (producto): # Comenzamos el bucle anidado que va repetirse la cantidad de veces que diga el numero ingresado en el input "producto"
+                                precio = input(f"¿Cual es el precio del producto {cont_compra}? ") # Entramos al bucle y pedimos el precio del producto que corresponde al contador de compra
+                                if precio.isdigit(): # Validamos que sea un número el caracter ingresado
+                                    precio = int(precio) # Volvemos integer el precio para poder hacer calculos
+                                    precio_s_descuento += precio # Para calcular el precio sin descuento agregamos a la variable el valor del precio cada vez que se repite el bucle 
+                                    descuento = input ("¿Tiene descuento? S para si, N para no. ") # Pedimos que nos digan si el producto tiene descuento, detallando las opciones de respuesta
+                                    cont_compra += 1 # Actualizamos el contador asi en la próxima vuelta sigue diciendo el número correcto de producto ingresado
+                                else: # Condicion si no es un dígito
+                                    print ("Por favor ingrese un número.") # Imprimimos el aviso para que ingresen los datos correctos
+                                    break
+                                
+                                if descuento == "S" or descuento == "s": # Hacemos una condición para analizar los datos ingresados en el input "descuento".
+                                    porcentaje = precio * 0.10 # Si usan las letras que corresponden a "si", calculamos el porcentaje de descuento que tiene el producto
+                                    precio_c_descuento = precio - porcentaje # Calculamos el precio con descuento del producto restando el porcentaje de desciento al precio original
+                                    ahorro = precio - precio_c_descuento # Calculamos la suma de precios
+                                    ahorro += ahorro
+                                elif descuento == "N" or descuento == "n": # Si usan las letras que corresponden a "no":...
+                                    continue # ... Seguimos con el programa
+                                else: # Si no usan ninguna de las letras pedidas: ...
+                                    print ("Por favor ingrese S para si o N para no ") #... Aclaramos que ingresen los datos correctos
+                                    break
+                        
+                    promedio = precio_s_descuento / producto # Calculamos el promedio de los productos ingresados usando el precio sin descuento dividido la cantidad de productos ingresada
+                    precio_c_descuento_suma = precio_s_descuento - ahorro # Calculamos el total con descuentos
+
+                    print (f"Cliente: {nombre}") # Imprimimos el nombre del cliente
+                    print (f"Cantidad de productos: {producto}") # Imprimimos la cantidad de productos ingresada
+                    print (f"Total sin descuentos: {precio_s_descuento}") # Imprimimos el total de precio sin descuentos 
+                    print (f"Total con descuentos:{precio_c_descuento_suma}") # Imprimimos el total de precio con descuentos 
+                    print (f"Ahorro:{ahorro}") # Imprimimos el ahorro total
+                    print (f"Promedio por producto:{promedio:.2f}") # Imprimimos el promedio de precio por producto sin contar el ahorro
+
                 else:
                     print ("Ingrese un número mayor a cero")
-                    break
-                producto = int(producto) # Actualizamos el producto de string a integer para que pueda ser leido correctamente en la comparación de la condición
-                if producto > 0 : # Hacemos una condición para ver si el número ingresado es mayor a cero
-                    break #Si lo es, actualizamos el contador para salir del bucle y seguir con el resto del programa
-                else: # condicion si el número es cero o menor
-                    print ("Por favor ingrese un número mayor a cero.") # Imprimimos el aviso para que ingresen los datos correctos
-                    exit() # Terminamos el programa para que pueda iniciar de nuevo y completar correctamenteç
-
-            cont_compra = 1 # Preparamos el contador, empieza en 1 para que diga correctamente el número de producto a pedir datos
-            precio_s_descuento = 0 # Preparamos la variable que va a guardar el precio final sin descuento
-            producto = int(producto) # Actualizamos el producto de string a integer para que pueda ser leido correctamente, lo hice dos veces porque no lee al que esta dentro del bucle sino
-
-            while cont_compra <= producto: # Comenzamos el bucle que va a estar activo solo para la cantidad de productos ingresados en el input "producto"
-                for x in range (producto): # Comenzamos el bucle anidado que va repetirse la cantidad de veces que diga el numero ingresado en el input "producto"
-                    precio = input(f"¿Cual es el precio del producto {cont_compra}? ") # Entramos al bucle y pedimos el precio del producto que corresponde al contador de compra
-                    if precio.isdigit(): # Validamos que sea un número el caracter ingresado
-                        precio = int(precio) # Volvemos integer el precio para poder hacer calculos
-                        precio_s_descuento += precio # Para calcular el precio sin descuento agregamos a la variable el valor del precio cada vez que se repite el bucle 
-                        descuento = input ("¿Tiene descuento? S para si, N para no. ") # Pedimos que nos digan si el producto tiene descuento, detallando las opciones de respuesta
-                        cont_compra += 1 # Actualizamos el contador asi en la próxima vuelta sigue diciendo el número correcto de producto ingresado
-                    else: # Condicion si no es un dígito
-                        print ("Por favor ingrese un número.") # Imprimimos el aviso para que ingresen los datos correctos
-                        exit() # Terminamos el programa para que pueda iniciar de nuevo y completar correctamenteç
-                    
-                    if descuento == "S" or descuento == "s": # Hacemos una condición para analizar los datos ingresados en el input "descuento".
-                        porcentaje = precio * 0.10 # Si usan las letras que corresponden a "si", calculamos el porcentaje de descuento que tiene el producto
-                        precio_c_descuento = precio - porcentaje # Calculamos el precio con descuento del producto restando el porcentaje de desciento al precio original
-                        ahorro = precio - precio_c_descuento # Calculamos la suma de precios
-                        ahorro += ahorro
-                    elif descuento == "N" or descuento == "n": # Si usan las letras que corresponden a "no":...
-                        continue # ... Seguimos con el programa
-                    else: # Si no usan ninguna de las letras pedidas: ...
-                        print ("Por favor ingrese S para si o N para no ") #... Aclaramos que ingresen los datos correctos
-                        exit() # Terminamos el programa para que pueda iniciar de nuevo y completar correctamente
-                        
-            promedio = precio_s_descuento / producto # Calculamos el promedio de los productos ingresados usando el precio sin descuento dividido la cantidad de productos ingresada
-            precio_c_descuento_suma = precio_s_descuento - ahorro # Calculamos el total con descuentos
-
-            print (f"Cliente: {nombre}") # Imprimimos el nombre del cliente
-            print (f"Cantidad de productos: {producto}") # Imprimimos la cantidad de productos ingresada
-            print (f"Total sin descuentos: {precio_s_descuento}") # Imprimimos el total de precio sin descuentos 
-            print (f"Total con descuentos:{precio_c_descuento_suma}") # Imprimimos el total de precio con descuentos 
-            print (f"Ahorro:{ahorro}") # Imprimimos el ahorro total
-            print (f"Promedio por producto:{promedio:.2f}") # Imprimimos el promedio de precio por producto sin contar el ahorro
-
 
         case "2": # Ejercicio 2
 
