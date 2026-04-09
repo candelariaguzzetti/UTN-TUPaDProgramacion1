@@ -380,36 +380,37 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     energia = energia - 20 # Restamos la energía gastada en hacer esta acción
                                     tiempo = tiempo - 2 # Restamos el tiempo tomado
                                     cont_forzar += 1 # Sumamos al contador de esta acción 
-                                    riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ")
-                                    while riesgo.isdigit():
-                                        if riesgo == "1" or riesgo == "2" or riesgo == "3":
+                                    riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ") #Pedimos la variable que decide si puede abrir la cerradura sin problemas
+                                    while riesgo.isdigit(): # Ciclo mientras la variable ingresada sea un dígito
+                                        if riesgo == "1" or riesgo == "2" or riesgo == "3": # Si "riesgo" es uno de lo números pedidos, segimos con el programa
                                             continue
                                         else:
-                                            print ("Por favor ingrese un número del 1 al 3")
+                                            print ("Por favor ingrese un número del 1 al 3") # Si no lo es, volvemos a pedir el número
                                             break
-                                    riesgo = int(riesgo)
-                                    if riesgo == 3 and cerraduras_abiertas <= 2:
+                                    riesgo = int(riesgo) # Convertimos en integer la variable "riesgo" para poder usarla en ecuaciones
+                                    if riesgo == 3 and cerraduras_abiertas <= 2:  # Si eligieron el 3 y abrieron menos de 3 cerraduras, empieza la alarma y no se abre la cerradura
                                         alarma = True
                                         print ("Empieza a sonar la alarma")
                                         print ("No logra abrir la cerradura")
                                         break
-                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas <= 1:
+                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas <= 1: # Si elige el 1 o el 2, y abrieron menos de 2 cerraduras, se abre una cerradura
                                         print ("Logra abrir 1 cerradura")
-                                        cerraduras_abiertas += 1
+                                        cerraduras_abiertas += 1 # Se actualiza la variable de cerraduras abiertas
                                         break
-                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas == 2: 
-                                        if cont_forzar == 3 and (cont_hackear == 0 and cont_descansar == 0):
-                                            if alarma == True:
+                                    elif (riesgo == 1 or riesgo == 2) and cerraduras_abiertas == 2: # Si elige el 1 o el 2 y ya hay 2 cerraduras abiertas ,
+                                        if cont_forzar == 3 and (cont_hackear == 0 and cont_descansar == 0): # Si el contador de hackear es 3, y los otros dos contadores son 0,
+                                            if alarma == True: # Si la alarma está sonando, solo se traba la cerradura
                                                 print ("Con la alarma sonando, se traba la cerradura debido a sus recurrentes intentos de abrirla ")
-                                            else:                        
-                                                print ("Empieza a sonar la alarma debido a sus recurrentes intentos de abrir la cerradura ")
+                                            else: # Si la alarma no está sonando, empieza a sonar y no logra abrirse la cerradura
+                                                alarma = True
+                                                print ("Empieza a sonar la alarma debido a sus recurrentes intentos de abrir la cerradura ") 
                                                 print ("No logra abrir la cerradura")
-                                                cont_forzar = 0
+                                                cont_forzar = 0 # Se resetean los contadores
                                                 cont_hackear = 0
                                                 cont_descansar = 0
                                                 break
-                                    if cont_hackear < 3 and (cont_hackear > 0 or cont_descansar > 0):
-                                            cont_forzar = 0
+                                    if cont_hackear < 3 and (cont_hackear > 0 or cont_descansar > 0): # Si el contador de hackear es menor a 3 y los otros dos contadores son igual a 0, 
+                                            cont_forzar = 0 # Se resetean los contadores
                                             cont_hackear = 0
                                             cont_descansar = 0
                                             break
@@ -417,14 +418,14 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                         energia = energia - 10  # Restamos la energía gastada en hacer esta acción
                                         tiempo = tiempo - 3 # Restamos el tiempo tomado
                                         cont_hackear +=1  # Sumamos al contador de esta acción 
-                                        if cerraduras_abiertas <= 2: 
-                                            if cont_codigo >= 0 and cont_codigo <= 4:
-                                                for x in range (1,5):
-                                                    cont_codigo +=1
-                                                    if cont_codigo == 1:
+                                        if cerraduras_abiertas <= 2: # Si se abrieron menos de 3 cerraduras 
+                                            if cont_codigo >= 0 and cont_codigo <= 4: # si el contador de código esta entre 0-4,
+                                                for x in range (1,5): # Hacemos un ciclo que se repitan 4 veces
+                                                    cont_codigo +=1 # Cada vuelta le sumamos 1 al contador de código
+                                                    if cont_codigo == 1: # Depende del número que correponda al contador le agregamos una letra del código
                                                         codigo_parcial += "M"
-                                                        print (f"Código: {codigo_parcial}")
-                                                    elif cont_codigo == 2:
+                                                        print (f"Código: {codigo_parcial}") # Imprimimos cómo va quedando el código
+                                                    elif cont_codigo == 2: # Repetimos el proceso 3 veces màs
                                                         codigo_parcial += "A"
                                                         print (f"Código: {codigo_parcial}")
                                                     elif cont_codigo == 3:
@@ -434,12 +435,12 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                                         codigo_parcial += "L"
                                                         print (f"Código: {codigo_parcial}")
                                                 cont_codigo += 1
-                                                if len(codigo_parcial) <= 8:
-                                                    cerraduras_abiertas += 1
-                                                    print ("Has abierto una cerradura")
+                                                if len(codigo_parcial) <= 8: # Si el codigo tiene menos longitud que 9 caracteres, se abre una cerradura
+                                                    cerraduras_abiertas += 1 # Se actualiza el contador de cerraduras
+                                                    print ("Has abierto una cerradura") 
                                                 break
-                                            if cont_codigo > 4 and cont_codigo <= 8:  
-                                                for x in range (1,5):
+                                            if cont_codigo > 4 and cont_codigo <= 8:  # si el contador de código esta entre 5-8,
+                                                for x in range (1,5): # Repetimos los mismos procesos que en el ciclo anterior
                                                     cont_codigo +=1
                                                     if cont_codigo == 5:
                                                         codigo_parcial += "L"
@@ -454,19 +455,19 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                                         codigo_parcial += "O"
                                                         print (f"Código: {codigo_parcial}")
                                                         print ("Código completo")
-                                            if len(codigo_parcial) <= 8 and  len(codigo_parcial) >=5:
-                                                cerraduras_abiertas += 1
+                                            if len(codigo_parcial) <= 8 and  len(codigo_parcial) >=5: # Si el codigo tiene una longitud de entre 5-8 caracteres, se abre una cerradura
+                                                cerraduras_abiertas += 1  # Se actualiza el contador de cerraduras
                                                 print ("Has abierto una cerradura")
                                                 break
                                         else:
-                                            print ("Ya abrió todas las cerraduras posibles usando este método")
+                                            print ("Ya abrió todas las cerraduras posibles usando este método")  # Si ya se abrieron 2 cerraduras usando este método, no se pueden abrir más
                                             break
                                 case "3":
                                     cont_descansar += 1 # Sumamos al contador de esta acción 
-                                    if energia < 100:
-                                        energia += 15
-                                    tiempo -= 1
-                                    if alarma == True:
+                                    if energia < 100: # Si la energía es menos del máximo permitido
+                                        energia += 15 # Actualizamos con una suma de 15 a la energía
+                                    tiempo -= 1 # Restamos el tiempo tomado
+                                    if alarma == True: # Si la alarma está sonando, restamos 10 a la energía ganada
                                         energia -= 10
                                     print ("Se toma un breve descanso")
                                     break
@@ -476,13 +477,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                         else:
                             print ("Elija un número del 1 al 3") # Si no es dígito pedimos nuevamente un número del 1 al 3 
 
-                        if alarma == True and tiempo <= 3:
+                        if alarma == True and tiempo <= 3: # Si la alarma está sonando y quedan menos de 3 tiempos, el jugador pierde
                             print ("DERROTA (bloqueo)")
                             break
-                        elif cerraduras_abiertas == 3:
+                        elif cerraduras_abiertas == 3: # Si logra abrir 3 cerraduras, el jugador gana
                             print ("VICTORIA")
                             break
-                        elif energia <= 0 or tiempo <= 0:
+                        elif energia <= 0 or tiempo <= 0: # Si la energía o el tiempo son menores a 0, el jugador pierde
                             print ("DERROTA")
                             break
                     else:
@@ -491,7 +492,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
 
         case "5": # Ejercicio 5
 
-            vida_gladiador = 100 
+            vida_gladiador = 100 # Planteamos las variables iniciales 
             vida_enemigo = 100
             pociones_vida = 3
             danio_base_ataque_pesado = 15 
@@ -499,48 +500,52 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             turno_gladiador = True
 
             while True:
-                nombre = input ("Ingrese el nombre del gladiador ")
-                while nombre.isalpha():
-                    print (f"Vida enemigo: {vida_enemigo}")
+                nombre = input ("Ingrese el nombre del gladiador ") # Pedimos el nombre del jugador y hacemos una validación para asegurarnos que sean solo letras
+                while nombre.isalpha(): # Si lo son, comienza el juego
+                    print (f"Vida enemigo: {vida_enemigo}")  # Planteamos las vidas actuales 
                     print (f"Vida gladiador: {vida_gladiador}")
-                    print ("Las opciones son las siguentes:")
+                    print ("Las opciones son las siguentes:") # Presentamos las opciones a elegir 
                     print ("1. Ataque pesado")
                     print ("2. Ráfaga Veloz")
                     print ("3. Curar")
-                    opcion = input ("Ingrese el número de la acción que quiere realizar ")
-                    if opcion.isdigit():
-                        match opcion:
-                            case "1":
-                                    if vida_enemigo >= 20:
+                    opcion = input ("Ingrese el número de la acción que quiere realizar ") # Pedimos el número de opción que quieren realizar y hacemos una validación para ver que sea un dígito
+                    if opcion.isdigit(): # Si lo es, comenzamos la acción correspondiente 
+                        match opcion: # Unimos el número ingresado a la acción
+                            case "1": # Opcion 1 - Ataque pesado
+                                    if vida_enemigo >= 20: # si la vida del enemigo es mayor a 19, restamos el daño base del ataque pesado a la vida del enemigo 
                                         vida_enemigo -= danio_base_ataque_pesado
                                         print(f"¡Atacaste al enemigo por {danio_base_ataque_pesado} puntos de daño!")
-                                    else:
-                                        danio_critico = danio_base_ataque_pesado * 1.5
+                                    else: # Si la vida es menor a 20, se hace un golpe crítico y se resta 1.5 más vida al enemigo 
+                                        danio_critico = danio_base_ataque_pesado * 1.5 
                                         vida_enemigo -= danio_critico
                                         print(f"¡Atacaste al enemigo por {danio_critico} puntos de daño!")
-                            case "2":
-                                for x in range (1, 4):
+                            case "2": # Opción 2 - Rafaga veloz
+                                for x in range (1, 4): # Hacemos un ciclo de 3 vueltas donde cada vuelta hace 5 de daño
                                     vida_enemigo -= 5
                                     print ("Golpe conectado por 5 de daño")
-                            case "3":
-                                if pociones_vida > 0:
+                            case "3": # Opcion 3 - Curar
+                                if pociones_vida > 0: # Si todavía tiene pociones disponibles se le suma 30 a la vida y se resta una pocion de su stock
                                     vida_gladiador += 30
                                     pociones_vida -= 1
                                 else:
-                                    print ("¡No quedan pociones!")
+                                    print ("¡No quedan pociones!") # Si no tiene pociones, pierde el turno
                                     break
+                            case _:
+                                print ("Por favor ingrese un número del 1 al 3") # Si ingresan un número que no tenga opción vinculada, lo volvemos a pedir 
                     else:
-                        print ("Elija un número del 1 al 3")
-                    vida_gladiador -= 12
+                        print ("Elija un número del 1 al 3") # Si no es un dígito se vuelve a pedir que ingrese la opción correcta 
+
+                    vida_gladiador -= 12 # Al final del turno ataca el enemigo y le resta 12 de vida al jugador 
                     print ("¡El enemigo te atacó por 12 puntos de daño!")
-                    if vida_gladiador > 0 and vida_enemigo <= 0:
+
+                    if vida_gladiador > 0 and vida_enemigo <= 0: # Si el jugador tiene vida disponible y el enemigo perdió toda su vida, gana el jugador 
                         print (f"¡VICTORIA! {nombre} ha ganado la batalla.")
                         break
-                    elif vida_gladiador <= 0:
+                    elif vida_gladiador <= 0: # Si el jugar pierde toda se vida, pierde
                         print ("DERROTA. Has caído en combate.")
                         break
                 else:
-                    print ("Por favor ingrese solo letras como caracteres")
+                    print ("Por favor ingrese solo letras como caracteres") # Si ingresaron algo que no sea letras. volvemos a pedir el nombre
         
         case _: 
             print ("Por favor ingrese un número del 1 al 5")
