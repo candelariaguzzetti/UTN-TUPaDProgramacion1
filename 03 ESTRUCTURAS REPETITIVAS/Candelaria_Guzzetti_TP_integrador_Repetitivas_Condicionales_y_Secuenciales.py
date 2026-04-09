@@ -118,13 +118,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
         case "3": # Ejercicio 3
 
             while True:
-                nombre = input ("Ingrese el nombre del operador ")
-                if nombre.isalpha():
+                nombre = input ("Ingrese el nombre del operador ") # Bucle para conseguir el nombre del operador 
+                if nombre.isalpha(): # Validación de que se hayan usado solo letras
                     break
                 else:
-                    print ("Ingrese solo letras como caracteres")
+                    print ("Ingrese solo letras como caracteres") # Si no se usaron solo letras se imprime un aviso y se vuelve a empezar
 
-            lunes1 = " "
+            lunes1 = " " # Preparamos las variables que vamos a usar para los turnos cada dia
             lunes2 = " "
             lunes3 = " "
             lunes4 = " "
@@ -132,31 +132,31 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             martes2 = " "
             martes3 = " "
 
-            while True:
+            while True: # Ciclo para que se repitan las siguientes opciones al terminar
                 print ("Elija una opción de las siguientes:")
                 print ("1. Reservar turno")
                 print ("2. Cancelar turno (por nombre)")
                 print ("3. Ver agenda del día")
                 print ("4. Ver resumen general")
                 print ("5. Cerrar sistema")
-                opcion = input ("Ingrese el número de la opción elegida ")
-                if opcion.isdigit():
-                    match opcion:
-                        case "1":
-                            dia = int(input("Ingrese el día a reservar: Lunes (1) o Martes (2) "))
-                            match dia:
-                                case 1:
-                                    paciente = input ("Ingrese el nombre del paciente ")
-                                    if paciente.isalpha(): 
-                                        if paciente == lunes1:
-                                            print ("El paciente ya está agendado en el 1er horario del lunes")
+                opcion = input ("Ingrese el número de la opción elegida ") # Input para la opción a elegir 
+                if opcion.isdigit(): # Validamos que se haya ingresado un número 
+                    match opcion: # Unimos la variable opcion con la acción correspondiente a realizar
+                        case "1": # Opcion 1 - Reservar turno 
+                            dia = int(input("Ingrese el día a reservar: Lunes (1) o Martes (2) ")) # Pedimos el día que se quiere reservar
+                            match dia: # Hacemos un nuevo match a la variable de dia
+                                case 1: # Opcion 1 - Lunes
+                                    paciente = input ("Ingrese el nombre del paciente ") # Pedimos el nombre del paciente a agendar
+                                    if paciente.isalpha(): # Si el nombre esta ingresado solo con letras comenzamos el proceso de reserva
+                                        if paciente == lunes1: # Buscamos si el paciente ya está agendado en alguno de los turnos del lunes
+                                            print ("El paciente ya está agendado en el 1er horario del lunes") # De ser así, avisamos que ya está en el turno validado
                                         elif paciente == lunes2:
                                             print ("El paciente ya está en el 2do horario del lunes")
                                         elif paciente == lunes3:
                                             print ("El paciente ya está agendando en le 3er horario del lunes")
                                         elif paciente == lunes4:
                                             print ("El paciente ya está agendado en el 4to horario del lunes")
-                                        if lunes1 == " " and paciente != lunes2 and paciente != lunes3 and paciente != lunes4:
+                                        if lunes1 == " " and paciente != lunes2 and paciente != lunes3 and paciente != lunes4: # Si estan vacios los bloques que se comparan inicialmente y el paciente no se encuentra en ninguno de los siguientes bloques, se agenda al paciente en el espacio vacío
                                             lunes1 = paciente
                                             print ("Paciente agendado en el 1er horario del lunes")
                                         elif lunes2 == " " and paciente != lunes1 and paciente != lunes3 and paciente != lunes4:
@@ -170,13 +170,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                             print ("Paciente agendado en el 4to horario del lunes")
                                         else:
                                             if paciente != lunes1 and paciente != lunes2 and paciente != lunes3 and paciente != lunes4:
-                                                print ("No hay horarios disponibles el lunes")
+                                                print ("No hay horarios disponibles el lunes") # Si estan todos los dias ocupados y el paciente no se encuentra en ninguno, imprimimos un mensaje de aviso 
                                             else:
                                                 continue
                                     else:
-                                        print ("Por favor ingrese solo letras como caracteres")
-                                case 2:
-                                    paciente = input ("Ingrese el nombre del paciente ")
+                                        print ("Por favor ingrese solo letras como caracteres") # Si el nombre no es solo letras, pedimos que lo carguen como corresponde
+                                case 2: # Opcion 2 - Martes
+                                    paciente = input ("Ingrese el nombre del paciente ") #Repetimos los mismos procesos que hicimos con el lunes pero cargando la información en los espacios disponibles para el martes 
                                     if paciente.isalpha(): 
                                         if paciente == martes1:
                                             print ("El paciente ya está agendado en el 1er horario del martes")
@@ -200,13 +200,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                                 continue
                                     else:
                                         print ("Por favor ingrese solo letras como caracteres")
-                        case "2":
-                            dia = int(input("Ingrese el día a cancelar: Lunes (1) o Martes (2) "))
-                            match dia:
-                                case 1:
-                                    paciente = input ("Ingrese el nombre del paciente ")
-                                    if paciente.isalpha():
-                                        if paciente == lunes1:
+                        case "2": # Opción 2 - Cancelar turno
+                            dia = int(input("Ingrese el día a cancelar: Lunes (1) o Martes (2) ")) # Pêdimos el día que se quiere cancelar 
+                            match dia: # Hacemos un match a la variable día para asignar el día correspondiente 
+                                case 1: # Día 1 - Lunes
+                                    paciente = input ("Ingrese el nombre del paciente ") # Pedimos el nombre del paciente 
+                                    if paciente.isalpha(): # Validamos que esté escrito solo con letras 
+                                        if paciente == lunes1: # Buscamos al paciente en los turnos agendados y vacíamos el espacio en caso de que haya una coincidencia 
                                             lunes1 = " "
                                             print ("Turno en el 1er horario cancelado")
                                         elif paciente == lunes2:
@@ -219,9 +219,9 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                             lunes4 = " "
                                             print ("Turno en el 3er horario cancelado")
                                         else:
-                                            print ("No hay turnos asignados para ese paciente el día lunes")
-                                case 2:
-                                    paciente = input ("Ingrese el nombre del paciente ")
+                                            print ("No hay turnos asignados para ese paciente el día lunes") # Si no encontró ninguna coincidencia imprimimos un aviso
+                                case 2: # Día 2 - Martes
+                                    paciente = input ("Ingrese el nombre del paciente ") # Hacemos el mismo proceso que en lunes
                                     if paciente.isalpha():
                                         if paciente == martes1:
                                             martes1 = " "
@@ -237,10 +237,10 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                 case _:
                                     print ("Por favor ingrese 1 para lunes o 2 para martes")
                         case "3":
-                            dia = int(input("Ingrese el día a reservar: Lunes (1) o Martes (2) "))
+                            dia = int(input("Ingrese el día a reservar: Lunes (1) o Martes (2) ")) # Pedimos el día que se quiere ver los turnos
                             match dia:
-                                case 1:
-                                    print ("Los turnos disponibles son los siguientes:")
+                                case 1: # Día 1 - Lunes
+                                    print ("Los turnos disponibles son los siguientes:") # Si el día está vacío imprimimos "libre", si no "ocupado"
                                     if lunes1 == " ":
                                         print ("Turno 1 del lunes: libre")
                                     else:
@@ -257,8 +257,8 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                         print ("Turno 4 del lunes: libre")
                                     else:
                                         print ("Turno 4 del lunes: ocupado")
-                                case 2:
-                                    print ("Los turnos disponibles son los siguientes:")
+                                case 2: # Día 2 - Martes
+                                    print ("Los turnos disponibles son los siguientes:") # Si el día está vacío imprimimos "libre", si no "ocupado"
                                     if martes1 == " ":
                                         print ("Turno 1 del martes: libre")
                                     else:
@@ -272,9 +272,9 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     else:
                                         print ("Turno 3 del martes: ocupado")
                                 case _:
-                                    print ("Por favor ingrese 1 para lunes o 2 para martes")
-                        case "4":
-                            print ("Los turnos son los siguientes:")
+                                    print ("Por favor ingrese 1 para lunes o 2 para martes") # Clausula por si no completan con el número requerido
+                        case "4": # Resumen general
+                            print ("Los turnos son los siguientes:") # Si el día está vacío imprimimos "libre", si no "ocupado"
                             if lunes1 == " ":
                                 print ("Turno 1 del lunes: libre")
                             else:
@@ -303,13 +303,13 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                 print ("Turno 3 del martes: libre")
                             else:
                                 print ("Turno 3 del martes: ocupado")
-                            cont_lunes = 0
+                            cont_lunes = 0 # Creamos los contadores para calcular los turnos tomados cada día
                             cont_martes = 0
-                            if lunes1 != " ":
+                            if lunes1 != " ": #Si no está vacío sumamos al contador de lunes 
                                 cont_lunes += 1
                             else:
                                 pass
-                            if lunes2 != " ":
+                            if lunes2 != " ": # Hacemos lo mismo para cada espacio de turno
                                 cont_lunes += 1
                             else:
                                 pass
@@ -321,36 +321,36 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                 cont_lunes += 1
                             else:
                                 pass
-                            if martes1 != " ":
+                            if martes1 != " ": #Si no está vacío sumamos al contador de martes
                                 cont_martes += 1
                             else:
                                 pass
                             if martes2 != " ":
-                                cont_martes += 1
+                                cont_martes += 1 # Hacemos lo mismo para cada espacio de turno
                             else:
                                 pass
                             if martes3 != " ":
                                 cont_martes += 1
                             else:
                                 pass
-                            if cont_lunes > cont_martes:
-                                print (f"El día con más turnos asignados es el lunes (Turnos:{cont_lunes})")
-                            elif cont_lunes < cont_martes:
-                                print (f"El día con más turnos asignados es el martes (Turnos:{cont_martes})")
-                            else:
-                                print (f"Hay la misma cantidad de turnos asignados los dos días (Turnos:{cont_lunes})")
+                            if cont_lunes > cont_martes: # Si hay mas turnos asignados el lunes
+                                print (f"El día con más turnos asignados es el lunes (Turnos:{cont_lunes})") # Imprimimos el aviso
+                            elif cont_lunes < cont_martes: # Si hay mas turnos asignados el martes 
+                                print (f"El día con más turnos asignados es el martes (Turnos:{cont_martes})") # Imprimimos el aviso
+                            else: # Si hay la misma cantidad de turnos los dos días
+                                print (f"Hay la misma cantidad de turnos asignados los dos días (Turnos:{cont_lunes})") # Imprimimos el aviso
                         case "5":
                             print ("¡Adios!") # Saludamos
                             exit()
                         case _:
-                            print ("Por favor ingrese una opción del 1 al 5")
+                            print ("Por favor ingrese una opción del 1 al 5") # Opcion si no ingresan uno de los números pedidos
                 else:
-                    print ("Ingrese un número del 1 al 5")
+                    print ("Ingrese un número del 1 al 5") # Si no se ingresó un número pedimos que lo hagan y volvemos a empezar
 
         case "4": # Ejercicio 4
 
 
-            energia = 100
+            energia = 100 # Planteamos las variables iniciales 
             tiempo = 12
             cerraduras_abiertas = 0
             alarma = False
@@ -361,25 +361,25 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             cont_codigo = 0
 
 
-            while True:
-                    nombre = input ("Ingrese el nombre del agente ")
-                    while nombre.isalpha():
-                        print (f"Agente activo: {nombre}")
+            while True: # Creamos el ciclo para que se repita el menú
+                    nombre = input ("Ingrese el nombre del agente ") #Pedimos el nombre del agente 
+                    while nombre.isalpha(): # Si el nombre es solo letras continuamos con el código
+                        print (f"Agente activo: {nombre}") # Imprimimos las estadísticas actuales
                         print (f"Energía: {energia}")
                         print (f"Tiempo: {tiempo} minutos")
                         print (f"Cerraduras Abiertas: {cerraduras_abiertas}")
-                        print ("1. Forzar cerradura")
+                        print ("1. Forzar cerradura") # Imprimimos las opciones disponibles a realizar 
                         print ("2. Hackear panel")
                         print ("3. Descansar")
-                        opcion = input("Elija una opción del 1 al 3 ")
-                        while opcion.isdigit():
-                            match opcion:
-                                case "1":
-                                    if energia < 40 and alarma == False:
-                                        print ("Hay riesgo de alarma")
-                                    energia = energia - 20
-                                    tiempo = tiempo - 2
-                                    cont_forzar += 1
+                        opcion = input("Elija una opción del 1 al 3 ") # Pedimos que se elija una de las opciones de arriba 
+                        while opcion.isdigit(): # Si la opción elegida es un dígito continuamos con el código 
+                            match opcion: # Unimos el número solicitado a la opción
+                                case "1": # Si elijen opcion 1
+                                    if energia < 40 and alarma == False: # Si la alarma no está sonando ya y la energía es menos a 40...
+                                        print ("Hay riesgo de alarma") # ... Avisamos que podría sonar la alarma
+                                    energia = energia - 20 # Restamos la energía gastada en hacer esta acción
+                                    tiempo = tiempo - 2 # Restamos el tiempo tomado
+                                    cont_forzar += 1 # Sumamos al contador de esta acción 
                                     riesgo = input ("Elija un número del 1 al 3 para evitar la alarma ")
                                     while riesgo.isdigit():
                                         if riesgo == "1" or riesgo == "2" or riesgo == "3":
@@ -414,10 +414,10 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                             cont_descansar = 0
                                             break
                                 case "2":
-                                        energia = energia - 10
-                                        tiempo = tiempo - 3
-                                        cont_hackear +=1 
-                                        if cerraduras_abiertas <= 2:
+                                        energia = energia - 10  # Restamos la energía gastada en hacer esta acción
+                                        tiempo = tiempo - 3 # Restamos el tiempo tomado
+                                        cont_hackear +=1  # Sumamos al contador de esta acción 
+                                        if cerraduras_abiertas <= 2: 
                                             if cont_codigo >= 0 and cont_codigo <= 4:
                                                 for x in range (1,5):
                                                     cont_codigo +=1
@@ -462,6 +462,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                             print ("Ya abrió todas las cerraduras posibles usando este método")
                                             break
                                 case "3":
+                                    cont_descansar += 1 # Sumamos al contador de esta acción 
                                     if energia < 100:
                                         energia += 15
                                     tiempo -= 1
@@ -470,10 +471,11 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                                     print ("Se toma un breve descanso")
                                     break
                                 case _:
-                                    print ("Por favor ingrese un número del 1 al 3")
+                                    print ("Por favor ingrese un número del 1 al 3") # Si ingresan otro número que no vaya del 1 al 3, pedimos la información correcta
                                     break
                         else:
-                            print ("Elija un número del 1 al 3")
+                            print ("Elija un número del 1 al 3") # Si no es dígito pedimos nuevamente un número del 1 al 3 
+
                         if alarma == True and tiempo <= 3:
                             print ("DERROTA (bloqueo)")
                             break
@@ -484,7 +486,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                             print ("DERROTA")
                             break
                     else:
-                        print ("Por favor ingrese solo letras como caracteres")
+                        print ("Por favor ingrese solo letras como caracteres") # Si el nombre no es solo letras, pedimos que vuelvan a poner la información
                     
 
         case "5": # Ejercicio 5
