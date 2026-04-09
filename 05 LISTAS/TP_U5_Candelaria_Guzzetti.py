@@ -215,9 +215,9 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                     promediomateriasfinal = promediomaterias / filascargar
                 print (f"El promedio de {tabla[0][h]} es {promediomateriasfinal}")
 
-        case "9":
+        case "9": # Ejercicio 9 
 
-            contfinal = False
+            contfinal = False # Preparamos la variables que va a romper el ciclo
 
             tateti = [["-"]*3 for datos in range(3)] # Creamos una matriz de 3x3 celdas
 
@@ -225,141 +225,142 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
                 print(fila)
 
-            while contfinal == False:
+            while contfinal == False: # Mientras el contador que marca el final sea falso
 
-                contjugador = 0
+                contjugador = 0 # Cargamos el contador del jugador para que sea 0 y se repita en 0 cada vuelta del ciclo
 
-                for a in range (2):
-                    contjugador += 1 
+                for a in range (2): # Creamos un ciclo que de dos vueltas para los turnos de cada jugador 
+                    contjugador += 1  # En cada vuelta sumamos 1 al contador para señalizar quien es el jugador que tiene que jugar
 
                     print (f"Turno del jugador {contjugador}")
-                    turno = input ("Elija el espacio en donde quiere poner su ficha, separando fila de columna con una coma.Ejemplo: 1,3 (fila 1, columna 3)")
-                    match turno:
+
+                    turno = input ("Elija el espacio en donde quiere poner su ficha, separando fila de columna con una coma.Ejemplo: 1,3 (fila 1, columna 3)") # Pedimos la celda a completar
+                    match turno: # Unimos la celda ingresada con la acción correspondiente 
 
                         case "1,1":
 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente 
                                 del tateti [0] [0]
                                 tateti[0].insert (0, "X")
                                     
-                            else:
+                            else: # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [0] [0]
                                 tateti[0].insert (0, "O")
                                     
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actulizada
                                 print(fila)
                                 
                         case "1,2":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [0] [1]
                                 tateti[0].insert (1, "X")
-                            else:
+                            else: # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [0] [1]
                                 tateti[0].insert (1, "O")
 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actualizada
                                 print(fila)
 
                         case "1,3":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [0] [2]
                                 tateti[0].insert (2, "X")
-                            else:
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [0] [2]
                                 tateti[0].insert (2, "O") 
 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actualizada
                                 print(fila)
 
                         case "2,1":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [1] [0]
                                 tateti[1].insert (0, "X")
-                            else:
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [1] [0]
                                 tateti[1].insert (0, "O")
 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actulizada
                                 print(fila)
 
                         case "2,2":
 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [1] [1]
                                 tateti[1].insert (1, "X")
-                            else:
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [1] [1]
                                 tateti[1].insert (1, "O") 
                                 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actulizada
                                 print(fila)
                                 
                         case "2,3":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [1] [2]
                                 tateti[1].insert (2, "X")
                             else:
-                                del tateti [1] [2]
+                                del tateti [1] [2]  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 tateti[1].insert (2, "O")
                                 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actualizada
                                 print(fila)
 
                         case "3,1":
 
-                            if contjugador == 1:
+                            if contjugador == 1:  # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [2] [0]
                                 tateti[2].insert (0, "X")
-                            else:
-                                del tateti [2] [0]
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
+                                del tateti [2] [0]  
                                 tateti[2].insert (0, "O")
                                 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actulizada
                                 print(fila)
 
                         case "3,2":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [2] [1]
                                 tateti[2].insert (1, "X")
-                            else:
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [2] [1]
                                 tateti[2].insert (1, "O")
                                 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actualizada
                                 print(fila)
 
                         case "3,3":
                                 
-                            if contjugador == 1:
+                            if contjugador == 1: # Si es el jugador 1, insertamos una X en la celda correspondiente
                                 del tateti [2] [2]
                                 tateti[2].insert (2, "X")
-                            else:
+                            else:  # Si es el jugador 2, insertamos una O en la celda correspondiente
                                 del tateti [2] [2]
                                 tateti[2].insert (2, "O")
                                 
                             print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa actualizada
                                 print(fila)
 
                         case _: 
-                            print ("No ingresó ninguna combinación válida, pierde el turno. ¡Más atención la próxima! ")
+                            print ("No ingresó ninguna combinación válida, pierde el turno. ¡Más atención la próxima! ") # Si no ingresa una celda valida pierde el turno
                                 
-                    if tateti [0][0] == "X" and tateti [0][1] == "X" and tateti [0][2] == "X":
+                    if tateti [0][0] == "X" and tateti [0][1] == "X" and tateti [0][2] == "X": # Estas son las condiciones para ganar la partida
                         print ("Felicidades, gana el jugador 1")
-                        contfinal = True
+                        contfinal = True # Se cambia el contador del final a True y se termina el ciclo 
                         break
                     if tateti [0][0] == "O" and tateti [0][1] == "O" and tateti [0][2] == "O":
                         print ("Felicidades, gana el jugador 2")
@@ -416,7 +417,7 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                         contfinal = True
                         break
                     
-        case "10":
+        case "10": # Ejercicio 10
 
             productoscargar = 4   # Preparamos las variables que vamos a usar para los bucles 
             diascargar = 7
@@ -431,72 +432,68 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
             for fila in precios: # Imprimimos en un bucle cada fila de la tabla completa
                 print(fila)
             
-            contprod = 0
-            sumaproductos = 0
-            mayorventas =[]
+            mayorventas =[] # Preparamos la lista en donde vamos a cargar la suma de productos
 
-            for z in range (productoscargar):
-                sumaproductos = 0
-                for k in range (diascargar):
-                    contprod += 1
-                    sumaproductos += precios [z] [k]
+            for z in range (productoscargar): # Hacemos un ciclo que recorra la cantidad de veces como hay productos
+                sumaproductos = 0 # Esta variable se resetea con cada vuelta 
+                for k in range (diascargar): #  # Hacemos un ciclo interno que recorra la cantidad de veces como hay días
+                    sumaproductos += precios [z] [k] # Sumamos los productos de cada día usando como referencia los indices de los ciclos 
                 
-                mayorventas.append (sumaproductos)            
-                print (f"La suma de la semanana para el producto {z+1} es de: {sumaproductos}")
+                mayorventas.append (sumaproductos) # Agregamos a la lista el total de cada día            
+                print (f"La suma de la semanana para el producto {z+1} es de: {sumaproductos}") # Le sumamos 1 a z para que muestre el día correcto 
 
             print (mayorventas)
 
             mayorventastotales = max(mayorventas) # Calculamos el número de mayores ventas
             diamayor = mayorventas.index(mayorventastotales) # Calculamos el día que fue las mayores ventas totales 
-            print (f"El día con la mayores ventas fue el día {diamayor+1} con ${mayorventastotales} de ganancia") # Imprimimos los resultados
+            print (f"El día con la mayor productos vendidos fue el día {diamayor+1} con {mayorventastotales} productos. ") # Imprimimos los resultados
             
-        case "11": 
+        case "11": # Ejercicio 11
             
-            estudiantes10 = ["María Perez", "Juana Lopez", "Anabella Gutierrez", "Marisa Ramirez", "Loana Barroso", "Pedro Thompson", "Alonso Jimenez", "Facundo Fernandez", "Constanza Aparicio", "Luna Cabrera"]
+            estudiantes10 = ["María Perez", "Juana Lopez", "Anabella Gutierrez", "Marisa Ramirez", "Loana Barroso", "Pedro Thompson", "Alonso Jimenez", "Facundo Fernandez", "Constanza Aparicio", "Luna Cabrera"] # Cargamos los estudiantes 
         
-            nombrebusqueda = input ("Ingrese el nombre que desea buscar ")
-            if nombrebusqueda.isalpha:
+            nombrebusqueda = input ("Ingrese el nombre que desea buscar ") # Pedimos el nombre a buscar
+            if nombrebusqueda.isalpha: # Hacemos una validación para asegurarnos de que sean letras lo ingresado
 
-                if nombrebusqueda.title() in estudiantes10:
+                if nombrebusqueda.title() in estudiantes10: # Convertimos lo ingresado a Title Case para asegurarnos que coincida con los nombres guardados y buscamos si está en la lista
                     print (f"{nombrebusqueda.title()} se encuentra en la lista de estudiantes")
-                    indiceestudiante = estudiantes10.index(nombrebusqueda.title())
+                    indiceestudiante = estudiantes10.index(nombrebusqueda.title()) # Si esta en la lista buscamos su indice dentro de la misma para poder imprimirlo
                     print (f"{nombrebusqueda.title()} se encuentra en el puesto {indiceestudiante+1} de la lista de Estudiantes")
-                else:
+                else: # Si no esta en la lista, imprimimos un aviso y lo volvemos a pedir 
                     print (f"{nombrebusqueda.title()} no se encuentra en la lista de estudiantes")
                 
-                
             else:
-                print ("Ingrese solo letras en el nombre")
+                print ("Ingrese solo letras en el nombre") # Si ingresaron algo que no sea letras, imprimimos el aviso y volvemos a intentarlo
 
-        case "12":
+        case "12": # Ejercicio 12
 
-            lista8 = []
+            lista8 = [] # Creamos la lista vacía que vamos a usar 
 
-            for c in range (1,9):
-                num = int(input (f"Ingrese el numero {c} "))
-                if num == int(num):
+            for c in range (1,9): # Creamos un ciclo de 8 vueltas 
+                num = int(input (f"Ingrese el numero {c} ")) # Pedimos que ingresen un número y usamos el índice del ciclo para indicar cual 
+                if num == int(num): # Si ingresaron un número, lo anexamos a la lista previamente creada
                     lista8.append (num)
                 else:
-                    print ("Por favor ingrese un número")
-            print(lista8)
-            lista8.sort()
-            print(lista8)
-            lista8.reverse()
+                    print ("Por favor ingrese un número") # Si no pusieron un número, lo pedimos de nuevo
+            print(lista8) # Imprimimos la lista como la ingresaron
+            lista8.sort()  # Ponemos la lista en ordenn y la imprimimos
+            print(lista8) 
+            lista8.reverse() # Damos vuelta el orden de la lista y la imprimimos 
             print (lista8)
 
-        case "13":
+        case "13": # Ejercicio 13
 
-            puntajes = [450, 1200, 875, 990, 300, 1500, 640]
+            puntajes = [450, 1200, 875, 990, 300, 1500, 640] # Preparamos los puntajes en una lista
 
-            puntajes.sort()
+            puntajes.sort() # Los ponemos en orden 
 
-            print (f"El puntaje más bajo es el {puntajes[0]} y el puntaje más alto es el {puntajes[6]}")
+            print (f"El puntaje más bajo es el {puntajes[0]} y el puntaje más alto es el {puntajes[6]}") # Usamos los indices para pedir los puntajes 
             print ("Lista de puntajes: ")
             print (puntajes)
 
-            indicepuntaje = puntajes.index(990)
+            indicepuntaje = puntajes.index(990) # Buscamos el indice del puntaje 990
 
-            print (f"El puntaje 990 se encuentra en el puesto {indicepuntaje+1} en el ranking")
+            print (f"El puntaje 990 se encuentra en el puesto {indicepuntaje+1} en el ranking") # Imprimimos su lugar en el ranking 
 
         case _:
-            print ("Por favor ingrese un número del 1 al 13")
+            print ("Por favor ingrese un número del 1 al 13") # Solo se aceptan números del 1 al 13 
