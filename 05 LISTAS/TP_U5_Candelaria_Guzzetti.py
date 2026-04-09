@@ -217,192 +217,198 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
 
         case "9":
 
-            tateti = [["-"]*3 for datos in range(3)] # Creamos una matriz de 3x3 celdas
-
-            print ("Tablero inicial: ")
-            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                print(fila)
-
             contjugador = 0
-            while True:
+
+            while contjugador <= 2:
+
+                tateti = [["-"]*3 for datos in range(3)] # Creamos una matriz de 3x3 celdas
+
+                print ("Tablero inicial: ")
+                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                    print(fila)
+
                 contjugador = 0
 
-                for a in range (2):
-                    contjugador += 1 
+                while True:
+                    contjugador = 0
 
-                    if tateti [0][0] == "X" and tateti [0][1] == "X" and tateti [0][2] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
+                    for a in range (2):
+                        contjugador += 1 
 
-                    if tateti [0][0] == "O" and tateti [0][1] == "O" and tateti [0][2] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
+                        print (f"Turno del jugador {contjugador}")
+                        turno = input ("Elija el espacio en donde quiere poner su ficha, separando fila de columna con una coma.Ejemplo: 1,3 (fila 1, columna 3)")
+                        match turno:
 
-                    if tateti [1][0] == "X" and tateti [1][1] == "X" and tateti [1][2] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
-
-                    if tateti [1][0] == "O" and tateti [1][1] == "O" and tateti [1][2] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
-
-                    if tateti [2] [0] == "X" and tateti [2][1] == "X" and tateti [2][2] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
-                    
-                    if tateti [2] [0] == "O" and tateti [2] [1] == "O" and tateti [2] [2] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
-                    
-                    if tateti [0] [2] == "X" and tateti [1][2] == "X" and tateti [2][2] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
-
-                    if tateti [0] [2] == "O" and tateti [1] [2] == "O" and tateti [2] [2] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
-
-                    if tateti [0] [0] == "X" and tateti [1] [1] == "X" and tateti [2][2] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
-
-                    if tateti [0] [0] == "O" and tateti [1] [1] == "O" and tateti [2][2] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
-
-                    if tateti [0] [2] == "X" and tateti [1] [1] == "X" and tateti [2][0] == "X":
-                        print ("Felicidades, gana el jugador 1")
-                        exit()
-
-                    if tateti [0] [2] == "O" and tateti [1] [1] == "O" and tateti [2][0] == "O":
-                        print ("Felicidades, gana el jugador 2")
-                        exit()
-
-                    print (f"Turno del jugador {contjugador}")
-                    turno = input ("Elija el espacio en donde quiere poner su ficha, separando fila de columna con una coma.Ejemplo: 1,3 (fila 1, columna 3)")
-                    match turno:
-
-                        case "1,1":
-                            if contjugador == 1:
-                                del tateti [0] [0]
-                                tateti[0].insert (0, "X")
+                            case "1,1":
+                                if contjugador == 1:
+                                    del tateti [0] [0]
+                                    tateti[0].insert (0, "X")
+                                    
+                                else:
+                                    del tateti [0] [0]
+                                    tateti[0].insert (0, "O")
+                                    
                                 
-                            else:
-                                del tateti [0] [0]
-                                tateti[0].insert (0, "O")
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
                                 
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
-                            
-                        case "1,2":
-                            
-                            if contjugador == 1:
-                                del tateti [0] [1]
-                                tateti[0].insert (1, "X")
-                            else:
-                                del tateti [0] [1]
-                                tateti[0].insert (1, "O")
+                            case "1,2":
+                                
+                                if contjugador == 1:
+                                    del tateti [0] [1]
+                                    tateti[0].insert (1, "X")
+                                else:
+                                    del tateti [0] [1]
+                                    tateti[0].insert (1, "O")
 
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "1,3":
-                            
-                            if contjugador == 1:
-                                del tateti [0] [2]
-                                tateti[0].insert (2, "X")
-                            else:
-                                del tateti [0] [2]
-                                tateti[0].insert (2, "O") 
+                            case "1,3":
+                                
+                                if contjugador == 1:
+                                    del tateti [0] [2]
+                                    tateti[0].insert (2, "X")
+                                else:
+                                    del tateti [0] [2]
+                                    tateti[0].insert (2, "O") 
 
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "2,1":
-                            
-                            if contjugador == 1:
-                                del tateti [1] [0]
-                                tateti[1].insert (0, "X")
-                            else:
-                                del tateti [1] [0]
-                                tateti[1].insert (0, "O")
+                            case "2,1":
+                                
+                                if contjugador == 1:
+                                    del tateti [1] [0]
+                                    tateti[1].insert (0, "X")
+                                else:
+                                    del tateti [1] [0]
+                                    tateti[1].insert (0, "O")
 
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "2,2":
+                            case "2,2":
 
-                            if contjugador == 1:
-                                del tateti [1] [1]
-                                tateti[1].insert (1, "X")
-                            else:
-                                del tateti [1] [1]
-                                tateti[1].insert (1, "O") 
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
-                            
-                        case "2,3":
-                            
-                            if contjugador == 1:
-                                del tateti [1] [2]
-                                tateti[1].insert (2, "X")
-                            else:
-                                del tateti [1] [2]
-                                tateti[1].insert (2, "O")
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                                if contjugador == 1:
+                                    del tateti [1] [1]
+                                    tateti[1].insert (1, "X")
+                                else:
+                                    del tateti [1] [1]
+                                    tateti[1].insert (1, "O") 
+                                
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
+                                
+                            case "2,3":
+                                
+                                if contjugador == 1:
+                                    del tateti [1] [2]
+                                    tateti[1].insert (2, "X")
+                                else:
+                                    del tateti [1] [2]
+                                    tateti[1].insert (2, "O")
+                                
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "3,1":
+                            case "3,1":
 
-                            if contjugador == 1:
-                                del tateti [2] [0]
-                                tateti[2].insert (0, "X")
-                            else:
-                                del tateti [2] [0]
-                                tateti[2].insert (0, "O")
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                                if contjugador == 1:
+                                    del tateti [2] [0]
+                                    tateti[2].insert (0, "X")
+                                else:
+                                    del tateti [2] [0]
+                                    tateti[2].insert (0, "O")
+                                
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "3,2":
-                            
-                            if contjugador == 1:
-                                del tateti [2] [1]
-                                tateti[2].insert (1, "X")
-                            else:
-                                del tateti [2] [1]
-                                tateti[2].insert (1, "O")
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                            case "3,2":
+                                
+                                if contjugador == 1:
+                                    del tateti [2] [1]
+                                    tateti[2].insert (1, "X")
+                                else:
+                                    del tateti [2] [1]
+                                    tateti[2].insert (1, "O")
+                                
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case "3,3":
-                            
-                            if contjugador == 1:
-                                del tateti [2] [2]
-                                tateti[2].insert (2, "X")
-                            else:
-                                del tateti [2] [2]
-                                tateti[2].insert (2, "O")
-                            
-                            print ("Tablero actual: ")
-                            for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
-                                print(fila)
+                            case "3,3":
+                                
+                                if contjugador == 1:
+                                    del tateti [2] [2]
+                                    tateti[2].insert (2, "X")
+                                else:
+                                    del tateti [2] [2]
+                                    tateti[2].insert (2, "O")
+                                
+                                print ("Tablero actual: ")
+                                for fila in tateti: # Imprimimos en un bucle cada fila de la tabla completa
+                                    print(fila)
 
-                        case _: 
-                            print ("No ingresó ninguna combinación válida, pierde el turno. ¡Más atención la próxima! ")
+                            case _: 
+                                print ("No ingresó ninguna combinación válida, pierde el turno. ¡Más atención la próxima! ")
+                                
+                        if tateti [0][0] == "X" and tateti [0][1] == "X" and tateti [0][2] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            contjugador == 3
+                            break
+
+                        if tateti [0][0] == "O" and tateti [0][1] == "O" and tateti [0][2] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+
+                        if tateti [1][0] == "X" and tateti [1][1] == "X" and tateti [1][2] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            break
+
+                        if tateti [1][0] == "O" and tateti [1][1] == "O" and tateti [1][2] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+
+                        if tateti [2] [0] == "X" and tateti [2][1] == "X" and tateti [2][2] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            break
                             
+                        if tateti [2] [0] == "O" and tateti [2] [1] == "O" and tateti [2] [2] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+                            
+                        if tateti [0] [2] == "X" and tateti [1][2] == "X" and tateti [2][2] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            break
+
+                        if tateti [0] [2] == "O" and tateti [1] [2] == "O" and tateti [2] [2] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+
+                        if tateti [0] [0] == "X" and tateti [1] [1] == "X" and tateti [2][2] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            break
+
+                        if tateti [0] [0] == "O" and tateti [1] [1] == "O" and tateti [2][2] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+
+                        if tateti [0] [2] == "X" and tateti [1] [1] == "X" and tateti [2][0] == "X":
+                            print ("Felicidades, gana el jugador 1")
+                            break
+
+                        if tateti [0] [2] == "O" and tateti [1] [1] == "O" and tateti [2][0] == "O":
+                            print ("Felicidades, gana el jugador 2")
+                            break
+                    
         case "10":
 
             productoscargar = 4   # Preparamos las variables que vamos a usar para los bucles 
