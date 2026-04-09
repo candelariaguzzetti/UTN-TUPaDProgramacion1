@@ -456,8 +456,34 @@ while True: # Condicion para que se pueda repetir el selector de ejercicios una 
                 print ("Ingrese solo letras en el nombre")
 
         case "12":
-            pass
+
+            lista8 = []
+
+            for c in range (1,9):
+                num = int(input (f"Ingrese el numero {c} "))
+                if num == int(num):
+                    lista8.append (num)
+                else:
+                    print ("Por favor ingrese un número")
+            print(lista8)
+            lista8.sort()
+            print(lista8)
+            lista8.reverse()
+            print (lista8)
+
         case "13":
-            pass
+
+            puntajes = [450, 1200, 875, 990, 300, 1500, 640]
+
+            puntajes.sort()
+
+            print (f"El puntaje más bajo es el {puntajes[0]} y el puntaje más alto es el {puntajes[6]}")
+            print ("Lista de puntajes: ")
+            print (puntajes)
+
+            indicepuntaje = puntajes.index(990)
+
+            print (f"El puntaje 990 se encuentra en el puesto {indicepuntaje+1} en el ranking")
+
         case _:
             print ("Por favor ingrese un número del 1 al 13")
